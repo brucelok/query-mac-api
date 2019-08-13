@@ -34,3 +34,36 @@ $ docker build -t apitest .
 $ docker run --rm apitest your_api_key a4:83:e7:8b:0c:9b
 Apple, Inc
 ```
+
+## sample API return from https://macaddress.io
+```
+$ curl -s -X GET "https://api.macaddress.io/v1?apiKey=xxxxxxxxxxxxxxxxxxxxxxx&output=json&search=70:81:05:d2:25:0d" | python -mjson.tool
+{
+    "blockDetails": {
+        "assignmentBlockSize": "MA-L",
+        "blockFound": true,
+        "blockSize": 16777216,
+        "borderLeft": "708105000000",
+        "borderRight": "708105FFFFFF",
+        "dateCreated": "2011-07-26",
+        "dateUpdated": "2015-09-27"
+    },
+    "macAddressDetails": {
+        "administrationType": "UAA",
+        "applications": [],
+        "comment": "",
+        "isValid": true,
+        "searchTerm": "70:81:05:d2:25:0d",
+        "transmissionType": "unicast",
+        "virtualMachine": "Not detected",
+        "wiresharkNotes": "No details"
+    },
+    "vendorDetails": {
+        "companyAddress": "80 West Tasman Drive San Jose CA 94568 US",
+        "companyName": "Cisco Systems, Inc",
+        "countryCode": "US",
+        "isPrivate": false,
+        "oui": "708105"
+    }
+}
+```
