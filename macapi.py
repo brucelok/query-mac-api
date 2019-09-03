@@ -2,9 +2,10 @@
 import sys
 import json
 import urllib2
+from urllib2 import Request, urlopen, URLError
 
 '''
-desc: a simple script that query the MAC address's vendor
+desc: a simple script that query the MAC address's vendor via API call
       from https://macaddress.io API
 args:
     argv[1]: your API key from macaddress.io
@@ -19,12 +20,14 @@ url = 'https://api.macaddress.io/v1?apiKey=' + apikey + '&output=json&search=' +
 # print(url)
 
 response = urllib2.Request(url)
-handler = urllib2.urlopen(response)
-json_data = json.load(handler)
 
-code = handler.getcode()
+try:
+    handler = urllib2.urlopen(response)
+    json_data = json.load(handler)
+except URLError, e:
+    print e.code
+    sys.exit(2)
+
 searchmac = json_data['macAddressDetails']['searchTerm']
 companyname = json_data['vendorDetails']['companyName']
-
-#print(code)
 print(companyname)

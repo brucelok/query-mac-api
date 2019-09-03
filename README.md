@@ -17,7 +17,7 @@ $ git clone https://gitlab.com/lok.bruce/query-mac-api.git
 ## Two ways to run the program:
 
 ### 1. Standard CLI
-your can directly it from your Linux terminal
+your can simply run it from your Linux terminal
 ```
 $ python macapi.py your_api_key a4:83:e7:7a:0b:8c
 Apple, Inc
@@ -35,7 +35,7 @@ $ docker run --rm apitest your_api_key a4:83:e7:8b:0c:9b
 Apple, Inc
 ```
 
-## sample API return from https://macaddress.io
+## A sample API return from https://macaddress.io
 ```
 $ curl -s -X GET "https://api.macaddress.io/v1?apiKey=xxxxxxxxxxxxxxxxxxxxxxx&output=json&search=70:81:05:d2:25:0d" | python -mjson.tool
 {
