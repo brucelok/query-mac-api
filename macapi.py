@@ -14,10 +14,10 @@ return:
     the Company Name associated with that MAC address
 '''
 
-def handle_404_error(code, reason):
+def handle_404_error(code):
     print 'Failed to reach server, error: ', code
-    print 'Reason: ', reason
-    return
+    reason = 'not found'
+    return reason
 
 def main():
     apikey = sys.argv[1]
@@ -32,7 +32,7 @@ def main():
     except HTTPError, e:
         print e
         if e.code == 404:
-            handle_404_error(e.code, e.reason)
+            handle_404_error(e.code)
             sys.exit(2)
     except URLError as e:
         print e
