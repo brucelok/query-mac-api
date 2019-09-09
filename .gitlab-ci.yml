@@ -1,0 +1,29 @@
+stages:
+  - check
+  - unittest
+
+default:
+  image: python:2.7-slim
+
+syntax-check:
+  stage: check
+  script:
+    - yum -y install pylint
+    - pylint macapi.py
+  only:
+    refs:
+      - develop
+      - master
+      - /^feature.*$/
+  when: manual
+
+unit-test:
+  stage: unittest
+  script:
+    - python unittest_handle404.py
+  only:
+    refs:
+      - develop
+      - master
+      - /^feature.*$/
+  when: manual
