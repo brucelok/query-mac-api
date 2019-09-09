@@ -16,7 +16,7 @@ syntax-check:
       - develop
       - master
       - /^feature.*$/
-  when: manual
+#  when: manual
 
 unit-test:
   stage: unittest
@@ -27,7 +27,7 @@ unit-test:
       - develop
       - master
       - /^feature.*$/
-  when: manual
+#  when: manual
 
 run_script:
   stage: run
@@ -38,4 +38,4 @@ run_script:
       - develop
       - master
       - /^feature.*$/
-  when: manual
+#  when: manual
