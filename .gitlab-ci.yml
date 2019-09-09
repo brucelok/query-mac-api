@@ -32,7 +32,7 @@ unit-test:
 run_script:
   stage: run
   script:
-    - macapi.py $API_KEY 70:81:05:d2:25:0d
+    - python macapi.py $API_KEY 70:81:05:d2:25:0d
   only:
     refs:
       - develop
