@@ -2,7 +2,7 @@
 import sys
 import json
 import urllib2
-from urllib2 import Request, urlopen, URLError, HTTPError
+from urllib2 import URLError, HTTPError
 
 '''
 desc: a simple script that query the MAC address's vendor via API call
@@ -29,18 +29,18 @@ def main():
     try:
         handler = urllib2.urlopen(response)
         json_data = json.load(handler)
-    except HTTPError, e:
-        print e
-        if e.code == 404:
-            handle_404_error(e.code)
+    except HTTPError, err:
+        print err
+        if err.code == 404:
+            handle_404_error(err.code)
             sys.exit(2)
-    except URLError as e:
-        print e
+    except URLError as err:
+        print err
         sys.exit(2)
 
-    searchmac = json_data['macAddressDetails']['searchTerm']
+    # searchmac = json_data['macAddressDetails']['searchTerm']
     companyname = json_data['vendorDetails']['companyName']
-    print(companyname)
+    print companyname
 
 if __name__ == '__main__':
     main()
