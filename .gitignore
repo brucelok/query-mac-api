@@ -1,0 +1,56 @@
+# Compiled code
+*.py[cod]
+*.swp
+*.log
+*.rpm
+*.rpmmacros
+MANIFEST
+*.sqlite
+*.so
+
+# Distribution
+*.egg
+*.egg-info
+.cache
+.eggs/
+dist/
+build/
+.venv/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib64/
+virtualenv/
+
+# Installer logs
+pip-log.txt
+*.retry
+
+# Unit test/coverage reports
+.coverage
+cover
+coverage*.xml
+.tox
+nosetests.xml
+tests/credentials.yaml
+htmlcov/
+
+# OS
+.idea
+.DS_Store
+._*
+.vagrant
+
+# IDEs
+.project
+.pydevproject
+.settings
+.metadata
+
+# Terraform
+.terraform
+terraform.tfstate*
+credentials.json
