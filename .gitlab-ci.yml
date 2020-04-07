@@ -15,8 +15,9 @@ syntax-check:
     refs:
       - develop
       - master
-      - /^feature.*$/
-#  when: manual
+  except:
+    changes:
+      - "README.md"
 
 unit-test:
   stage: unittest
@@ -26,8 +27,9 @@ unit-test:
     refs:
       - develop
       - master
-      - /^feature.*$/
-#  when: manual
+  except:
+    changes:
+      - "README.md"
 
 run_script:
   stage: run
@@ -37,5 +39,6 @@ run_script:
     refs:
       - develop
       - master
-      - /^feature.*$/
-#  when: manual
+  except:
+    changes:
+      - "README.md"
