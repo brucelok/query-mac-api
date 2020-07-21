@@ -1,6 +1,6 @@
 # Query Mac API
 The project demonstrates the simple API in Python to query Mac address from https://macaddress.io, and return the vendor name associated with Mac address.
-I also want to demo that how a simply program go through the standard CI/CD process with Gitlab.
+I also want to demo how a simply program goes through the standard CI/CD process with Gitlab.
 
 The python script accepts 2 arguments:
 1. your API key from macaddress.io
