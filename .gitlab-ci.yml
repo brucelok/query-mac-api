@@ -15,11 +15,7 @@ syntax_check:
   image: python:2.7-slim
   script:
     - pip install pylint
-<<<<<<< HEAD
-    - pylint *.py --confidence=INFERENCE
-=======
     - pylint macapi.py --confidence=INFERENCE
->>>>>>> develop
   allow_failure: true
   only:
     refs:
@@ -42,12 +38,6 @@ unit_test:
 
 run_script:
   stage: run
-<<<<<<< HEAD
-  before_script:
-    - echo $MAC_ADDR
-  script:
-    - python macapi.py $API_KEY $MAC_ADDR
-=======
   image: python:2.7-slim
   before_script:
     - echo $MAC_ADDR
@@ -66,7 +56,6 @@ build_docker_image:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
     - docker build -t registry.gitlab.com/lok.bruce/query-mac-api .
     - docker push registry.gitlab.com/lok.bruce/query-mac-api:latest
->>>>>>> develop
   only:
     refs:
       - develop
