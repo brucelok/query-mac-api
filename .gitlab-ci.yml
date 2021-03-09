@@ -10,11 +10,11 @@ syntax-check:
   stage: check
   script:
     - pip install pylint
-    - pylint macapi.py --confidence=INFERENCE
+    - pylint *.py --confidence=INFERENCE
+  allow_failure: true
   only:
     refs:
       - develop
-      - master
   except:
     changes:
       - "README.md"
@@ -26,15 +26,16 @@ unit-test:
   only:
     refs:
       - develop
-      - master
   except:
     changes:
       - "README.md"
 
 run_script:
   stage: run
+  before_script:
+    - echo $MAC_ADDR
   script:
-    - python macapi.py $API_KEY 70:81:05:d2:25:0d
+    - python macapi.py $API_KEY $MAC_ADDR
   only:
     refs:
       - develop
