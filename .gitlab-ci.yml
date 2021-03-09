@@ -15,7 +15,7 @@ syntax_check:
   image: python:2.7-slim
   script:
     - pip install pylint
-    - pylint *.py --confidence=INFERENCE
+    - pylint macapi.py --confidence=INFERENCE
   allow_failure: true
   only:
     refs:
