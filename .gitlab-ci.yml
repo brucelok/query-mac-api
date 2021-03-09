@@ -11,6 +11,7 @@ syntax-check:
   script:
     - pip install pylint
     - pylint *.py --confidence=INFERENCE
+  allow_failure: true
   only:
     refs:
       - develop
