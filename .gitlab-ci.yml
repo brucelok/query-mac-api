@@ -1,6 +1,6 @@
 stages:
   - check
-  - unittest
+  - test
   - run
   - build
 
@@ -21,7 +21,7 @@ syntax_check:
       - "README.md"
 
 unit_test:
-  stage: unittest
+  stage: test
   script:
     - python unittest_handle404.py
   only:
@@ -46,6 +46,7 @@ run_script:
 
 build_docker_image:
   stage: build
+  image: docker:19.03.12
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
     - docker build -t registry.gitlab.com/lok.bruce/query-mac-api .
@@ -53,6 +54,21 @@ build_docker_image:
   only:
     refs:
       - develop
+  except:
+    changes:
+      - "README.md"
+
+run container:
+  stage: deploy
+  image: docker:19.03.12
+  before_script:
+    - echo $MAC_ADDR
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
+    - docker run --rm registry.gitlab.com/lok.bruce/query-mac-api:latest $API_KEY $MAC_ADDR
+  only:
+    refs:
+      - master
   except:
     changes:
       - "README.md"
