@@ -29,10 +29,14 @@ syntax_check:
 
 code_quality:
   stage: test
+  image: docker:stable
   variables:
     REPORT_FORMAT: html
   artifacts:
-    paths: [gl-code-quality-report.html]
+    reports:
+      codequality: gl-code-quality-report.html
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
 
 unit_test:
   stage: test
