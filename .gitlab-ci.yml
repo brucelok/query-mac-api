@@ -5,6 +5,9 @@ stages:
   - build
   - deploy
 
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
 image: docker:19.03.12
 
 services:
@@ -23,6 +26,13 @@ syntax_check:
   except:
     changes:
       - "README.md"
+
+code_quality:
+  stage: test
+  variables:
+    REPORT_FORMAT: html
+  artifacts:
+    paths: [gl-code-quality-report.html]
 
 unit_test:
   stage: test
