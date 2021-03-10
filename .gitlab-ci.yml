@@ -30,11 +30,11 @@ syntax_check:
 code_quality:
   stage: test
   image: docker:stable
-  variables:
-    REPORT_FORMAT: html
+#  variables:
+#    REPORT_FORMAT: html
   artifacts:
     reports:
-      codequality: gl-code-quality-report.html
+      codequality: gl-code-quality-report.json
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop"'
 
