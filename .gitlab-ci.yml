@@ -29,6 +29,8 @@ syntax_check:
 
 code_quality:
   stage: test
+  variables:
+    REPORT_FORMAT: html
   artifacts:
     paths: [gl-code-quality-report.html]
 
